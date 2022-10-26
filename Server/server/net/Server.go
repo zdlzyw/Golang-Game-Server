@@ -43,6 +43,7 @@ func (s *Server) Start() {
 						fmt.Println("receive buffer error, ", err)
 						continue
 					}
+					fmt.Printf("receive buff from client: %s, content = %d.", buffer, content)
 					if _, err := connect.Write(buffer[:content]); err != nil {
 						fmt.Println("write back buffer error, ", err)
 						continue

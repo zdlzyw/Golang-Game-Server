@@ -8,14 +8,14 @@ import (
 
 func main() {
 	fmt.Println("client start...")
-	time.Sleep(3 * time.Second)
-	connect, err := net.Dial("tcp", "127.0.0.1:8000")
+	time.Sleep(1 * time.Second)
+	connect, err := net.Dial("tcp", "192.168.0.104:8000")
 	if err != nil {
 		fmt.Println("client start error, exit!.", err)
 		return
 	}
 	for {
-		_, err := connect.Write([]byte("hell from client"))
+		_, err := connect.Write([]byte("here from client"))
 		if err != nil {
 			fmt.Println("write connect error, ", err)
 			return
