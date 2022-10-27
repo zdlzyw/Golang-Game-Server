@@ -1,8 +1,7 @@
 package net
 
 import (
-	"Server/server/iface"
-	"errors"
+	"Frame/frame/iface"
 	"fmt"
 	"net"
 )
@@ -13,16 +12,7 @@ type Server struct {
 	IPVersion string
 	IP        string
 	Port      uint16
-}
-
-// CallBackToClient 定义客户端绑定的handle api（应由用户自定义）
-func CallBackToClient(conn *net.TCPConn, data []byte, length int) error {
-	fmt.Println("[Connection Handle] Call Back TO Client ...")
-	if _, err := conn.Write(data[:length]); err != nil {
-		fmt.Println("write back buffer error, ", err)
-		return errors.New("CallBackToClient error")
-	}
-	return nil
+	Router    iface.IRouter
 }
 
 // Start 服务启动
@@ -46,7 +36,7 @@ func (s *Server) Start() {
 				fmt.Println("Accept tcp error, ", err)
 			}
 			// 处理新连接业务的方法由Connection进行绑定及处理
-			dealConn := NewConnection(connect, cid, CallBackToClient)
+			dealConn := NewConnection(connect, cid, s.Router)
 			cid++
 			go dealConn.Start()
 		}
@@ -65,6 +55,11 @@ func (s *Server) Serve() {
 	select {}
 }
 
+func (s *Server) AddRouter(router iface.IRouter) {
+	s.Router = router
+	fmt.Println("Add Route Success!")
+}
+
 // NewServer 初始化Server模块
 func NewServer(name string) iface.IServer {
 	s := &Server{
@@ -72,6 +67,7 @@ func NewServer(name string) iface.IServer {
 		IPVersion: "tcp4",
 		IP:        "0.0.0.0",
 		Port:      8000,
+		Router:    nil,
 	}
 	return s
 }

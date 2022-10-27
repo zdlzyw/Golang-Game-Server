@@ -1,3 +1,3 @@
-module Server
+module Frame
 
 go 1.18

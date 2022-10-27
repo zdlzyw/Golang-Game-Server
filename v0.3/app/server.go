@@ -1,8 +1,8 @@
 package main
 
 import (
-	"Server/server/iface"
-	"Server/server/net"
+	"Frame/frame/iface"
+	"Frame/frame/net"
 	"fmt"
 )
 

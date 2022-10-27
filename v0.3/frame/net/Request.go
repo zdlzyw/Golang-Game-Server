@@ -1,6 +1,6 @@
 package net
 
-import "Server/server/iface"
+import "Frame/frame/iface"
 
 type Request struct {
 	conn iface.IConnection

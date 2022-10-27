@@ -1,6 +1,6 @@
 package main
 
-import "Server/server/net"
+import "Frame/frame/net"
 
 func main() {
 	s := net.NewServer("game")

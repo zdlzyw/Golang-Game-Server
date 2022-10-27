@@ -1,7 +1,7 @@
 package net
 
 import (
-	"Server/server/iface"
+	"Frame/frame/iface"
 	"fmt"
 	"net"
 )
