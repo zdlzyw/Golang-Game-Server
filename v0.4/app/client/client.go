@@ -15,8 +15,7 @@ func main() {
 		return
 	}
 	for {
-		_, err := connect.Write([]byte("here from client"))
-		if err != nil {
+		if _, err := connect.Write([]byte("here from client")); err != nil {
 			fmt.Println("write connect error, ", err)
 			return
 		}
