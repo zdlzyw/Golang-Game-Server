@@ -23,14 +23,14 @@ func (s *Server) Start() {
 		if err != nil {
 			fmt.Println("resolve tcp add error :", err)
 		}
-		listenner, err := net.ListenTCP(s.IPVersion, address)
+		listener, err := net.ListenTCP(s.IPVersion, address)
 		if err != nil {
 			fmt.Println("listen tcp error :", err)
 		}
 		fmt.Println("Start server success, ", s.Name, " success, Listerning...")
 
 		for {
-			connect, err := listenner.AcceptTCP()
+			connect, err := listener.AcceptTCP()
 			if err != nil {
 				fmt.Println("Accept tcp error, ", err)
 			}

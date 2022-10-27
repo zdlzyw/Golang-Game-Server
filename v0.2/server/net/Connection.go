@@ -80,7 +80,7 @@ func (c *Connection) GetConnID() uint32 {
 }
 
 func (c *Connection) RemoteAddr() net.Addr {
-	return c.RemoteAddr()
+	return c.Conn.RemoteAddr()
 }
 
 func (c *Connection) Send(data []byte) error {
