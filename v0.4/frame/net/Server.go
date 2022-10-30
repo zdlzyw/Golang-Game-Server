@@ -15,7 +15,7 @@ type Server struct {
 	Port           uint16
 	Router         iface.IRouter
 	MaxConn        int
-	MaxPackageSize uint32
+	MaxPackageSize uint16
 }
 
 // Start 服务启动
@@ -68,7 +68,7 @@ func (s *Server) AddRouter(router iface.IRouter) {
 func NewServer() iface.IServer {
 	s := &Server{
 		Name:           utils.GlobalObject.Name,
-		IPVersion:      "tcp4",
+		IPVersion:      utils.GlobalObject.IPVersion,
 		IP:             utils.GlobalObject.Host,
 		Port:           utils.GlobalObject.TcpPort,
 		Router:         nil,

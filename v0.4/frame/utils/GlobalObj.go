@@ -11,10 +11,11 @@ type GlobalObj struct {
 	TcpServer      iface.IServer // 连接Socket对象
 	Name           string        // 主机服务名
 	Host           string        // 监听IP
+	IPVersion      string        // 连接方式
 	TcpPort        uint16        // 监听端口
 	Version        string        // 框架版本号
 	MaxConn        int           // 最大连接数
-	MaxPackageSize uint32        // 数据包字节最大值
+	MaxPackageSize uint16        // 数据包字节最大值
 }
 
 // GlobalObject 对外全局对象
@@ -33,10 +34,11 @@ func (g *GlobalObj) LoadConf() {
 	}
 }
 
-// init 初始化方法，未加载配置文件时的默认值。执行过后再进行加载及配置操作
+// init 初始化方法，未加载的配置项使用的默认值。执行过后再进行加载及配置操作
 func init() {
 	GlobalObject = &GlobalObj{
 		Name:           "Default Server",
+		IPVersion:      "tcp4",
 		Host:           "0.0.0.0",
 		TcpPort:        8000,
 		Version:        "v0.4",
