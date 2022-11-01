@@ -3,7 +3,7 @@
   "Host":           "0.0.0.0",
   "IPVersion":      "tcp4",
   "TcpPort":        8000,
-  "Version":        "v0.4",
+  "Version":        "v0.5",
   "MaxConn":        10,
   "MaxPackageSize": 512
 }
