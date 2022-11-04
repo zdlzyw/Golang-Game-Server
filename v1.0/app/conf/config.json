@@ -1,0 +1,10 @@
+{
+  "Name":           "Game Server",
+  "Host":           "0.0.0.0",
+  "IPVersion":      "tcp4",
+  "TcpPort":        8000,
+  "Version":        "v1.0",
+  "MaxConn":        10,
+  "MaxPackageSize": 512,
+  "WorkerPoolSize": 10
+}
